@@ -1,36 +1,36 @@
-﻿@model IEnumerable<WebApplication1.Models.BangSanPham>
-
+﻿@using WebApplication1.Models
+@model List<BangSanPham>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Sản phẩm";
 }
 
-<h2>Index</h2>
+<h2>Sản phẩm</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create")" class="btn btn-success">Tạo sản phẩm</a>
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.MaSP)
+            Mã sản phẩm
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TenSP)
+            Tên sản phẩm
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GiaBan)
+            Giá bán
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GiaGoc)
+            Giá gốc
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GiaGop)
+            Giá trả góp
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SoLuongTon)
+            Số lượng tồn
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LoaiSanPham.TenLoai)
+            Tên loại
         </th>
         <th></th>
     </tr>
@@ -59,9 +59,11 @@
             @Html.DisplayFor(modelItem => item.LoaiSanPham.TenLoai)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            
+            <a href="@Url.Action("Edit", new { id = item.id })" class="btn btn-warning">Sửa</a>
+            <a href="@Url.Action("Details", new { id = item.id })" class="btn btn-info">Xem</a>
+            <a href="@Url.Action("Delete", new { id = item.id })" class="btn btn-danger">Xóa</a>
+            
         </td>
     </tr>
 }

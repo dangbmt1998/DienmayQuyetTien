@@ -17,23 +17,20 @@ namespace WebApplication1.Controllers
         // GET: /Bangsanpham/
         public ActionResult Index()
         {
-            var bangsanphams = db.BangSanPhams.Include(b => b.LoaiSanPham);
-            return View(bangsanphams.ToList());
+            var model = db.BangSanPhams.ToList();
+            return View(model);
         }
 
         // GET: /Bangsanpham/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
+            var model = db.BangSanPhams.Find(id);
+            if (model == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return HttpNotFound(); ;
             }
-            BangSanPham bangsanpham = db.BangSanPhams.Find(id);
-            if (bangsanpham == null)
-            {
-                return HttpNotFound();
-            }
-            return View(bangsanpham);
+            
+            return View(model);
         }
 
         // GET: /Bangsanpham/Create
