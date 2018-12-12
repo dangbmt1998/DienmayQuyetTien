@@ -22,7 +22,7 @@ namespace WebApplication1.Controllers
         }
 
         // GET: /Bangsanpham/Details/5
-        public FileResult Details(string id)
+        public FileResult Details(int id)
         {
             var path = Server.MapPath("~/App_Data/" + id);
             return File(path, "images");
